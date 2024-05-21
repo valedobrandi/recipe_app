@@ -1,7 +1,6 @@
 import {
   Card,
-  CardBody,
-  Typography,
+ Typography,
 } from "@material-tailwind/react";
 import { RecipeType } from "../../types/type";
 type ProfileCardPropsType = {
@@ -11,13 +10,12 @@ export function ProfileCard({ recipe }: ProfileCardPropsType) {
   const { title, img } = recipe
 
   return (
-    <Card className="lg:w-96 lg:h-auto w-40 h-40 p-3 ml-auto rou mr-auto mb-5 flex flex-col justify-center pb-0">
-      <CardBody className="text-center">
+    <Card
+     className="lg:w-96 lg:h-auto w-40 m-auto mb-8 flex flex-col justify-center ">
       <img src={img} alt={title} className="rounded-lg"/>
-        <Typography variant="h6" color="blue-gray" className="pt-2 m-2 lg:text-2xl">
+        <Typography variant="h6" color="blue-gray" className="p-2 lg:text-2xl text-center uppercase">
           {title}
         </Typography>
-      </CardBody>
     </Card>
   );
 }

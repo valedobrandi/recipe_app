@@ -34,8 +34,8 @@ export default function Footer() {
 
   return (
 
-    <Navbar className="fixed bottom-0 z-10 h-max max-w-full bg-deep-purple-900
-       rounded-none py-2 lg:px-8 lg:py-4 m-0 px-0">
+    <Navbar className="fixed bottom-0 z-10 mx-auto h-max max-w-[1435px] bg-deep-purple-900
+       rounded-none m-0">
       <div className="flex items-center justify-around text-blue-gray-900 px-4">
         <Button
           onClick={() => handleClick('drinks')}
