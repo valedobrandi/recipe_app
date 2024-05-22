@@ -1,4 +1,4 @@
-export const meals = {
+const meals = {
   meals: [
     {
       idMeal: '52977',
@@ -109,4 +109,6 @@ export const meals = {
   ],
 };
 
-module.exports = meals;
+export default meals;
+
+

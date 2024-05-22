@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import isEmail from 'validator/lib/isEmail';
 import LogoRecipes from "../../assets/logo Recipes App.svg"
 import LocalStoreContext from "../../Context/LocalStoreContext";
+import { Button } from "react-bootstrap";
 
 export default function Login() {
   const { setUserStore } = useContext(LocalStoreContext)
@@ -62,18 +63,25 @@ export default function Login() {
               }}
             />
           </div>
-          <button
-            color="yellow"
+          <Button
+            variant="warning"
+            size="lg"
+            type="button"
+            disabled={!isDisable}
             data-testid="login-submit-btn"
             onClick={handleFormSubmit}
-            disabled={!isDisable}
-            className="mt-6">
+            className=" w-full mt-3"
+            >
             sign up
-          </button>
-          <button
-            className="mt-6">
+          </Button>
+          <Button
+          variant="dark"
+          size="lg"
+          type="button"
+          className="w-full mt-3"
+          >
             Register
-          </button>
+          </Button>
         </form>
       </Card>
     </div>

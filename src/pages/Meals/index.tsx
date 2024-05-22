@@ -3,21 +3,23 @@ import { useContext } from "react";
 import MealsContext from "../../Context/MealsContext";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import icone_meals from "../../assets/icone-prato.png";
+import icon_meals from "../../assets/icone-comida.svg"
 import Loading from "../../components/Loading";
 
 export default function Meals() {
   const {
     meals,
-    loading: isMeals,
-    loadingCategories: loading,
+    loading,
+    loadingCategories,
   } = useContext(MealsContext);
 
+
+  if (loading || loadingCategories) return <Loading />
+  
   return (
     <>
-      <Header title="MEALS" icon={icone_meals} />
-      {isMeals || (loading && <Loading />)}
-      {meals && !isMeals && <Recipes recipes={meals.slice(0, 12)} />}
+      <Header title="MEALS" icon={icon_meals} />
+      {meals && <Recipes recipes={meals.slice(0, 12)} />}
       <Footer />
     </>
   );

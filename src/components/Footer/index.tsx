@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import {
   Navbar,
-  MobileNav,
   Button,
   IconButton,
+  Collapse,
 } from "@material-tailwind/react";
 import icon_drink from "../../assets/icone-bebida.svg"
 import icon_meals from "../../assets/icone-comida.svg"
@@ -75,7 +75,7 @@ export default function Footer() {
         </IconButton>
 
       </div>
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className="flex items-center justify-evenly gap-x-1">
           <Button
             onClick={() => handleClick('drinks')}
@@ -88,7 +88,7 @@ export default function Footer() {
             <img src={icon_meals} alt="drinks" />
           </Button>
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
 
   );
