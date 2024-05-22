@@ -41,7 +41,7 @@ export default function Header({ title, isSearch = true, icon}: HeaderProps) {
         </div>
       </nav>
       <img
-      className={`m-auto p-5 ${window.innerWidth >= 960 ? "w-[125px]" : "w-[85px]"}`}
+      className='m-auto p-5 w-44'
       src={icon} alt="" />
       <h1
       className="text-center text-deep-purple-800 font-extrabold text-4xl"

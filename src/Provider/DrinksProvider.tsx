@@ -6,7 +6,6 @@ import {
   RecipeType,
   CategoriesType,
 } from "../types/type";
-import axios from "axios";
 import useFetch from "../Hooks/useFetch";
 type DrinksProviderType = {
   children: React.ReactNode;
@@ -50,7 +49,8 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
   const fetchData = async (url = "", redirect = true) => {
     setLoading(true);
     try {
-      const { data } = await axios.get(url);
+      const response = await fetch(url);
+      const data = await response.json();
       setDrinks(filterDataKeys(data.drinks));
 
       if (data.drinks.length === 1 && redirect) {

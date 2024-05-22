@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { CategoriesType, MealsDataType, RecipeType } from "../types/type";
 import { useNavigate } from "react-router-dom";
 import MealsContext from "../Context/MealsContext";
-import axios from "axios";
 import useFetch from "../Hooks/useFetch";
 
 type MealsProviderType = {
@@ -47,7 +46,8 @@ export default function MealsProvider({ children }: MealsProviderType) {
   const fetchData = async (url = "", redirect = true) => {
     setLoading(true);
     try {
-      const { data } = await axios.get(url);
+      const response = await fetch(url);
+      const data = await response.json()
       setMeals(filterDataKeys(data.meals));
 
       if (data.meals.length === 0) {
