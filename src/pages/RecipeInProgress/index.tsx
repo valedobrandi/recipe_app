@@ -92,7 +92,7 @@ export default function RecipeInProgress() {
             onClick={handleFinishRecipeFavorite}
             disabled={isDisabled.length !== checkList.length}
           >
-            Finish Rrecipe
+            Finish Recipe
           </Button>
         </div>
       </div>

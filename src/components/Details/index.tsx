@@ -37,7 +37,9 @@ export default function Details() {
     <div className="mb-20">
       <DetailsRecipe checkBox={false} />
       <div className="flex w-max gap-4 mx-auto m-4">
-        <Button onClick={handleNavigateAndData} color="green" className="text-black lg:p-6 lg:text-2xl">
+        <Button
+          onClick={handleNavigateAndData}
+          color="green" className="text-black lg:p-6 lg:text-2xl">
           Start Recipe
         </Button>
       </div>

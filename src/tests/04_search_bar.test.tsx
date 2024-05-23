@@ -9,8 +9,9 @@ import userEvent from "@testing-library/user-event";
 
 
 describe('Search Bar', async () => {
-    window.Element.prototype.animate = function() {return {} as Animation}
-  vi.spyOn(window.Element.prototype, 'animate').mockImplementation(() => { return {} as Animation});
+  window.Element.prototype.animate = function() {return {} as Animation}
+  vi.spyOn(window.Element.prototype, 'animate')
+  .mockImplementation(() => { return {} as Animation});
   vi.spyOn(global, 'fetch').mockImplementation(fetch_api);
   it('Search by recipe by name', async () => {
     renderWithRouter(
