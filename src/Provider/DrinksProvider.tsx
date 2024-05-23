@@ -79,7 +79,7 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
           `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`
         );
         break;
-      case "firstLetter":
+      case "Random recipe":
         fetchData(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
         break;
       default:
@@ -93,7 +93,7 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
     if (category === "all" || categoryRef.current === category) {
       const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
       categoryRef.current = category;
-      return fetchData(url);
+      return fetchData(url, false);
     }
     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
     fetchData(url, false);

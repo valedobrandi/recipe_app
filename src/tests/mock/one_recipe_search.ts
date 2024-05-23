@@ -1,14 +1,13 @@
- const detailMeal = {
-    meals: [{
+const one_recipe_search = {
+  meals: [
+    {
       idMeal: '52977',
-      strMeal: 'detail recipe',
+      strMeal: 'cake 1',
       strDrinkAlternate: null,
       strCategory: 'Side',
       strArea: 'Turkish',
-      strInstructions:
-      'Pick through your lentils for any foreign debris.',
-      strMealThumb:
-      'https://www.themealdb.com/images/media/meals/58oia61564916529.jpg',
+      strInstructions: 'Pick through your lentils for.',
+      strMealThumb: 'https://www.themealdb.com/images/media/meals/58oia61564916529.jpg',
       strTags: 'Soup',
       strYoutube: 'https://www.youtube.com/watch?v=VVnZd8A84z4',
       strIngredient1: 'Lentils',
@@ -51,11 +50,12 @@
       strMeasure18: ' ',
       strMeasure19: ' ',
       strMeasure20: ' ',
-      strSource:
-      'https://findingtimeforcooking.com/main-dishes/red-lentil-soup-corba/',
-      strImageSource: null,
-      strCreativeCommonsConfirmed: null,
-      dateModified: null }],
-  };
+      strSource: 'https://findingtimeforcooking.com/main-dishes/red-lentil-soup-corba/',
+      dateModified: null,
+    },
+  ],
+};
 
-  export default detailMeal;
+export default one_recipe_search;
+
+
