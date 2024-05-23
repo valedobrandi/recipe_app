@@ -51,15 +51,18 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setDrinks(filterDataKeys(data.drinks));
 
+      if (data.drinks.length === 0 || data.drinks === 'null') {
+        window.alert("Receita não encontrada!");
+      }
+      
       if (data.drinks.length === 1 && redirect) {
         navigate(`${location.pathname}/${drinks[0].id}`);
       }
+      setDrinks(filterDataKeys(data.drinks));
     } catch (error) {
       if (error instanceof Error) {
         setError(error);
-        console.log(error);
         return window.alert("Receita não encontrada!");
       }
     } finally {
@@ -90,7 +93,7 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
   const fetchByCategory = (category: string) => {
     setSelect(category) 
     
-    if (category === "all" || categoryRef.current === category) {
+    if (category === "All" || categoryRef.current === category) {
       const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
       categoryRef.current = category;
       return fetchData(url, false);

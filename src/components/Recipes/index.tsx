@@ -10,7 +10,7 @@ type RecipesProps = {
 export default function Recipes({ recipes }: RecipesProps) {
   const navigate = useNavigate();
   return (
-    <div className="mx-auto mb-20">
+    <div className="mx-auto mb-40">
       <FilterByCategory />
       <div className="flex justify-center gap-7 flex-wrap mt-4">
         {recipes &&

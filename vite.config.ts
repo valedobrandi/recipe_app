@@ -13,7 +13,14 @@ export default defineConfig({
     css: true,
     reporters: ['verbose'],
     coverage: {
-      reporter: ['test', 'json', 'html'],
+      reporter: ['text', 'json', 'html'],
+      include: ['src/**/*'],
+      exclude: [
+        "src/main.tsx",
+        "src/fakes",
+        "src/routes",
+        "src/tests"
+      ],
       provider: 'v8'
     }
   },
