@@ -30,18 +30,18 @@ describe('Route "/drinks"', () => {
       <Wrapper>
         <App />
       </Wrapper>,
-      { route: '/meals' },
+      { route: '/drinks' },
     );
 
     expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(2);
     await userEvent.click(screen.getByRole('combobox'));
-    await userEvent.click(screen.getByRole('option', {  name: /breakfast/i}));
-    expect(await screen.findByRole('heading', { name: /breakfast 1/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', {  name: /breakfast 2/i})).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('option', {  name: /ordinary drink/i}));
+    expect(await screen.findByRole('heading', { name: /ordinary drink 1/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', {  name: /ordinary drink 2/i})).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('combobox'));
     await userEvent.click(screen.getByRole('option', {  name: /all/i}));
-    expect(await screen.findByRole('heading', { name: /corba/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', {  name: /Kumpir/i})).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /GG/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', {  name: /A1/i})).toBeInTheDocument();
   });
 });
