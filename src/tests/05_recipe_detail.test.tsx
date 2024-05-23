@@ -14,7 +14,7 @@ describe('Route "/drinks"', async () => {
     .mockImplementation(() => { return {} as Animation });
   vi.spyOn(global, 'fetch').mockImplementation(fetch_api);
   it(`Router to recipe details, start a recipe with "start recipe" and finish with
-   "finish recipe btn`, async () => {
+   "finish recipe btn, check that it add to recipe donne and to favorite recipe`, async () => {
     renderWithRouter(
       <Wrapper>
         <App />
