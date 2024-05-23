@@ -48,14 +48,15 @@ export default function MealsProvider({ children }: MealsProviderType) {
     try {
       const response = await fetch(url);
       const data = await response.json()
-      setMeals(filterDataKeys(data.meals));
-
-      if (data.meals.length === 0) {
+      
+      if (data.meals.length === 0 || data.meals === 'null') {
         window.alert("Receita não encontrada!");
       }
       if (data.meals.length === 1 && redirect) {
         navigate(`${location.pathname}/${meals[0].id}`);
       }
+
+      setMeals(filterDataKeys(data.meals));
     } catch (error) {
       if (error instanceof Error) {
         console.log(error);
@@ -69,17 +70,17 @@ export default function MealsProvider({ children }: MealsProviderType) {
 
   const handleFetch = async (radio = "", input = "") => {
     switch (radio) {
-      case "ingredient":
+      case "Ingredient":
         fetchData(
           `https://www.themealdb.com/api/json/v1/1/filter.php?i=${input}`
         );
         break;
-      case "name":
+      case "Name":
         fetchData(
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
         );
         break;
-      case "firstLetter":
+      case "Random recipe":
         fetchData(`https://www.themealdb.com/api/json/v1/1/random.php`);
         break;
       default:
@@ -93,7 +94,7 @@ export default function MealsProvider({ children }: MealsProviderType) {
       const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
       categoryRef.current = category;
       setSelect('All')
-      return fetchData(url);
+      return fetchData(url, false);
     }
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
     fetchData(url, false);

@@ -1,8 +1,8 @@
-const ordinary_meal_category = {
+const cake_meal_search = {
   meals: [
     {
       idMeal: '52977',
-      strMeal: 'Breakfast 1',
+      strMeal: 'cake 1',
       strDrinkAlternate: null,
       strCategory: 'Side',
       strArea: 'Turkish',
@@ -55,7 +55,7 @@ const ordinary_meal_category = {
     },
     {
       idMeal: '52978',
-      strMeal: 'Breakfast 2',
+      strMeal: 'cake 2',
       strDrinkAlternate: null,
       strCategory: 'Side',
       strArea: 'Turkish',
@@ -109,6 +109,6 @@ const ordinary_meal_category = {
   ],
 };
 
-export default ordinary_meal_category;
+export default cake_meal_search;
 
 
