@@ -33,7 +33,7 @@ describe('Route "/drinks"', async () => {
     expect(screen.getByRole('columnheader', { name: /Ingredient/i })).toBeInTheDocument();
     expect(screen.getByText(/Shake well in a shaker with ice/i));
 
-    const LIKE_BTN = screen.getByAltText(/like/i)
+    const LIKE_BTN = screen.getByAltText(/dislike/i)
     expect(LIKE_BTN).toBeInTheDocument();
     await userEvent.click(LIKE_BTN);
     await userEvent.click(screen.getByRole('button', { name: /start recipe/i }));
@@ -57,5 +57,14 @@ describe('Route "/drinks"', async () => {
 
     expect(await screen.findByText(/aquamarine/i)).toBeInTheDocument();
     expect(await screen.findAllByText(/Done in:/i)).toHaveLength(1);
+
+    await userEvent.click(screen.getByAltText('profile'));
+    await userEvent.click(screen.getByText('Favorite Recipe'));
+
+    expect(await screen.findByText(/aquamarine/i)).toBeInTheDocument();
+    await userEvent.click(screen.getByAltText(/like/i));
+    expect(screen.getByText(/Favorite Recipes/i))
+    expect(screen.queryByText(/Aquamarine/i)).not.toBeInTheDocument();
+
   });
 });

@@ -18,7 +18,7 @@ export default function FavCard({ recipe }: FavCard) {
 
 
   return (
-      <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center ">
+      <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center mb-28">
         {recipe.map(({ id, category, image, name, nationality, type, alcoholicOrNot }) => {
           const isMeal = type === 'meal';
   
