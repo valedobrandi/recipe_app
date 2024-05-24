@@ -109,7 +109,7 @@ export default function DetailsRecipe({
               </div>
               <div className="p-10">
                 {setInstructions.map((steps, index) => (
-                  <p key={index} className="mb-3 lg:mx-12 lg:text-2xl text-black-500 dark:text-gray-400">{steps}</p>))}
+                  <p key={index} className="mb-3 lg:mx-12 lg:text-xl text-black-500 dark:text-gray-400">{steps}</p>))}
               </div>
               <RecipeVideo video={recipe.video} />
             </div>)
