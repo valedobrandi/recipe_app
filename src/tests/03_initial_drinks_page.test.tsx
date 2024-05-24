@@ -18,11 +18,13 @@ describe('Route "/drinks"', () => {
       { route: '/drinks' },
     );
 
-    expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(2);
-    expect(screen.getByRole('heading', { name: /GG/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', {  name: /A1/i})).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: /GG/i })).toBeInTheDocument();
+    expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(3);
+    expect(screen.getByRole('heading', { name: /Aquamarine/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /A1/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', {  name: /ABC/i})).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Aquamarine/i })).toBeInTheDocument();
     expect(screen.getByRole('img', {  name: /A1/i})).toBeInTheDocument();
+    expect(screen.getByRole('img', {  name: /ABC/i})).toBeInTheDocument();
   });
 
   it('"Select By Category" return the correct recipes', async () => {
@@ -33,7 +35,7 @@ describe('Route "/drinks"', () => {
       { route: '/drinks' },
     );
 
-    expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(2);
+    expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(3);
     await userEvent.click(screen.getByRole('combobox'));
     await userEvent.click(screen.getByRole('option', {  name: /ordinary drink/i}));
     expect(await screen.findByRole('heading', { name: /ordinary drink 1/i })).toBeInTheDocument();
@@ -41,7 +43,7 @@ describe('Route "/drinks"', () => {
 
     await userEvent.click(screen.getByRole('combobox'));
     await userEvent.click(screen.getByRole('option', {  name: /all/i}));
-    expect(await screen.findByRole('heading', { name: /GG/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /Aquamarine/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', {  name: /A1/i})).toBeInTheDocument();
   });
 });

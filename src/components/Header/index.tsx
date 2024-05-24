@@ -32,7 +32,7 @@ export default function Header({ title, isSearch = true, icon }: HeaderProps) {
               type="button" className="mr-14 p-2"
               aria-controls="navbar-solid-bg"
               aria-expanded="false">
-              <img src={HeaderPerfil} alt="" className="w-[35px] lg:w-12" />
+              <img src={HeaderPerfil} alt="profile" className="w-[35px] lg:w-12" />
             </button>
             {isSearch && (
               <button

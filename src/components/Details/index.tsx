@@ -34,12 +34,14 @@ export default function Details() {
 
 
   return (
-    <>
-      <div>
-        <DetailsRecipe checkBox={false} />
-        <div className="flex w-max gap-4 mx-auto m-4">
-          <Button  onClick={handleNavigateAndData} color="green" className="text-black lg:p-6 lg:text-2xl">Start Recipe</Button>
-        </div>
+    <div className="mb-20">
+      <DetailsRecipe checkBox={false} />
+      <div className="flex w-max gap-4 mx-auto m-4">
+        <Button
+          onClick={handleNavigateAndData}
+          color="green" className="text-black lg:p-6 lg:text-2xl">
+          Start Recipe
+        </Button>
       </div>
       <hr />
       <h2 className="my-10 text-xl text-center font-bold">Other Recommendations</h2>
@@ -49,6 +51,6 @@ export default function Details() {
       {mealsLoading
         ? <Loading />
         : (isDrinks && <Recomendation recipes={meals} />)}
-    </>
+    </div>
   );
 }

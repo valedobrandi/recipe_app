@@ -35,7 +35,8 @@ export default function CheckboxIngredients({ ingredient, handleCheckBox, id, in
                         }}
                     />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className={`text-sm lg:text-2xl font-semibold ${isChecked ? 'line-through' : ""}`}>
+                <Typography color="blue-gray"
+                 className={`text-sm lg:text-2xl font-semibold ${isChecked ? 'line-through decoration-2 decoration-red-900 decoration-double' : ""}`}>
                     {ingredient} - <span>{measures[index]}</span>
                 </Typography>
             </label>

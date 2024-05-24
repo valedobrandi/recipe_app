@@ -18,13 +18,13 @@ export default function FavCard({ recipe }: FavCard) {
 
 
   return (
-      <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center ">
+      <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center mb-28">
         {recipe.map(({ id, category, image, name, nationality, type, alcoholicOrNot }) => {
           const isMeal = type === 'meal';
   
           return (
             <Card className="lg:min-w-[500px] lg:h-auto w-fit h-auto
-             mb-5 p-0 flex flex-row border-2 border-gray-500
+             mb-5 p-0 flex flex-col border-2 border-gray-500
               rounded-lg mx-auto flex-wrap" key={id}>
               <img
                 className="lg:w-56 lg:h-auto lg:rounded-lg lg:self-start lg:ml-0 lg:p-0 w-auto h-fit self-center mx-auto"

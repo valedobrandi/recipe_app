@@ -4,7 +4,7 @@ import meals from "./meals";
 import drinkCategories from "./categories_drink";
 import drinks from "./drinks";
 import detailDrink from "./detail_drink";
-import ordinary_drink_category from "./breakfast_meal_category";
+import ordinary_drink_category from "./ordinary_drink_category";
 import breakfast_meal_category from "./breakfast_meal_category";
 import cake_meal_search from "./cake_meal_search";
 import no_meal_search from "./no_meal_search";
@@ -37,7 +37,7 @@ const fetch_api = (URL: string | URL | Request) =>
         return Promise.resolve(drinkCategories);
       if (URL === "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
         return Promise.resolve(drinks);
-      if (URL === "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=15997")
+      if (URL === "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=178319")
         return Promise.resolve(detailDrink);
       if (URL === `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary Drink`)
         return Promise.resolve(ordinary_drink_category);

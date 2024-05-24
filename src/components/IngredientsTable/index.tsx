@@ -16,7 +16,7 @@ export default function IngredientsTable({ ingredients, measures }: IngredientsT
                                 className="border-b border-neutral-200 font-medium dark:border-white/10">
                                 <tr>
                                     <th scope="col" className="px-10 py-4">#</th>
-                                    <th scope="col" className="pr-10 py-4 pl-0">Ingredient</th>
+                                    <th scope="col" className="px-10 py-4">Ingredient</th>
                                     <th scope="col" className="px-10 py-4">Measures</th>
                                 </tr>
                             </thead>
