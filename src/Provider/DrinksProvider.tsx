@@ -53,11 +53,11 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
       const data = await response.json();
 
       if (data.drinks.length === 0 || data.drinks === 'null') {
-        window.alert("Receita não encontrada!");
+        return window.alert("Receita não encontrada!");
       }
       
       if (data.drinks.length === 1 && redirect) {
-        navigate(`${location.pathname}/${drinks[0].id}`);
+       return  navigate(`${location.pathname}/${data.drinks[0].idDrink}`);
       }
       setDrinks(filterDataKeys(data.drinks));
     } catch (error) {
@@ -72,12 +72,12 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
 
   const handleFetch = async (radio = "", input = "") => {
     switch (radio) {
-      case "ingredient":
+      case "Ingredient":
         fetchData(
           `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${input}`
         );
         break;
-      case "name":
+      case "Name":
         fetchData(
           `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`
         );

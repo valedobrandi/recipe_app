@@ -50,10 +50,11 @@ export default function MealsProvider({ children }: MealsProviderType) {
       const data = await response.json()
       
       if (data.meals.length === 0 || data.meals === 'null') {
-        window.alert("Receita não encontrada!");
+        return window.alert("Receita não encontrada!");
       }
+
       if (data.meals.length === 1 && redirect) {
-        navigate(`${location.pathname}/${meals[0].id}`);
+       return navigate(`${location.pathname}/${data.meals[0].idMeal}`);
       }
 
       setMeals(filterDataKeys(data.meals));

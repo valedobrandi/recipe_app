@@ -24,7 +24,7 @@ export default function FavCard({ recipe }: FavCard) {
   
           return (
             <Card className="lg:min-w-[500px] lg:h-auto w-fit h-auto
-             mb-5 p-0 flex flex-row border-2 border-gray-500
+             mb-5 p-0 flex flex-col border-2 border-gray-500
               rounded-lg mx-auto flex-wrap" key={id}>
               <img
                 className="lg:w-56 lg:h-auto lg:rounded-lg lg:self-start lg:ml-0 lg:p-0 w-auto h-fit self-center mx-auto"
