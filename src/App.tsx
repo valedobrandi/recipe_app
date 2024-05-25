@@ -12,7 +12,7 @@ import RecipeInProgress from "./pages/RecipeInProgress";
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto border-x-4 min-h-screen">
+    <div className="max-w-[1440px] mx-auto min-h-screen">
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/meals" element={<Meals />} />

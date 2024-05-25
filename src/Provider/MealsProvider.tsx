@@ -90,6 +90,8 @@ export default function MealsProvider({ children }: MealsProviderType) {
   };
 
   const fetchByCategory = (category: string) => {
+    console.log(category);
+    
     setSelect(category)
     if (category === "All" || categoryRef.current === category) {
       const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";

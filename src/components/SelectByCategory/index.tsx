@@ -1,4 +1,4 @@
-import { Select, Option } from "@material-tailwind/react";
+import { Form } from "react-bootstrap";
 
 
 
@@ -10,23 +10,22 @@ type SelectByCategoryPropsType = {
 
 export function SelectByCategory({ categories, fetchBy, select }: SelectByCategoryPropsType) {
 
-    const handleEvent = (option: string) => {
-        fetchBy(option)
+    const handleEvent = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        fetchBy(event.target.value);
     }
     
     return (
            <div className="w-72 mt-5 m-auto">
-            <Select
+            <Form.Select
                 className="text-xl"
                 value={select}
-                label="Select by category"
-                onChange={select => handleEvent(select)}
+                onChange={(e) => handleEvent(e)}
             >
                 {categories && categories.map((category, index) => (
-                    <Option key={index} value={category}>{category}</Option>
+                    <option key={index} value={category}>{category}</option>
 
                 ))}
-            </Select>
+            </Form.Select>
         </div> 
     );
 }

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import SearchIcon from "../../assets/icone pesquiar.svg";
-import HeaderLogo from "../../assets/Group 4.png";
-import HeaderLogoTitle from "../../assets/logo Recipes app.png";
+import HeaderLogo from "../../assets/icone_recipes_app.svg";
+import HeaderLogoTitle from "../../assets/logo_recipes_app.svg";
 import HeaderPerfil from "../../assets/icone-perfil.svg";
 
 type HeaderProps = {

@@ -79,13 +79,13 @@ export default function Footer() {
           <div className="flex items-center justify-evenly gap-x-1">
             <Button
               onClick={() => handleClick('drinks')}
-              variant="text" size="sm" className="">
-              <img src={icon_drink} alt="meals" />
+              variant="text" size="sm">
+              <img src={icon_drink} alt="meals" className="h-12" />
             </Button>
             <Button
               onClick={() => handleClick('meals')}
-              variant="text" size="sm" className="">
-              <img src={icon_meals} alt="drinks" />
+              variant="text" size="sm">
+              <img src={icon_meals} alt="drinks" className="h-12" />
             </Button>
           </div>
         </Collapse>
