@@ -15,7 +15,7 @@ export function SelectByCategory({ categories, fetchBy, select }: SelectByCatego
     }
     
     return (
-           <div className="w-72 mt-5 m-auto">
+           <div className="w-72 mt-2 m-auto">
             <Form.Select
                 className="text-xl"
                 value={select}

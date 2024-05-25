@@ -5,6 +5,7 @@ import { screen } from '@testing-library/react'
 import { vi } from 'vitest';
 import fetch_api from "./mock/fetch";
 import userEvent from "@testing-library/user-event";
+import drinks from "./mock/drinks";
 
 
 
@@ -22,9 +23,13 @@ describe('Route "/drinks"', () => {
     expect(screen.getByRole('heading', { name: /Aquamarine/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /A1/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', {  name: /ABC/i})).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: /Aquamarine/i })).toBeInTheDocument();
-    expect(screen.getByRole('img', {  name: /A1/i})).toBeInTheDocument();
-    expect(screen.getByRole('img', {  name: /ABC/i})).toBeInTheDocument();
+    const backGroundImages = screen.getAllByTestId('bg-card-image')
+    expect(backGroundImages[0])
+    .toHaveStyle(`background-image: url(${drinks.drinks[0].strDrinkThumb})`)
+    expect(backGroundImages[1])
+    .toHaveStyle(`background-image: url(${drinks.drinks[1].strDrinkThumb})`)
+    expect(backGroundImages[2])
+    .toHaveStyle(`background-image: url(${drinks.drinks[2].strDrinkThumb})`)
   });
 
   it('"Select By Category" return the correct recipes', async () => {

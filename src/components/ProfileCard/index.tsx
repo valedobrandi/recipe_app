@@ -11,6 +11,7 @@ export function ProfileCard({ recipe }: ProfileCardPropsType) {
 
   return (
     <Card
+      data-testid="bg-card-image"
       style={{ backgroundImage: `url(${img})` }}
       className="relative w-60 h-60 m-auto mb-8 bg-cover
        flex justify-center cursor-pointer">
