@@ -11,15 +11,23 @@ export function ProfileCard({ recipe }: ProfileCardPropsType) {
 
   return (
     <Card
-      className="w-40 m-auto mb-8 flex justify-center cursor-pointer">
-      <img src={img} alt={title} className="rounded-lg" />
+      style={{ backgroundImage: `url(${img})` }}
+      className="relative w-60 h-60 m-auto mb-8 bg-cover
+       flex justify-center cursor-pointer">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
       <Typography
         variant="h6"
         color="blue-gray"
-        className="p-2 uppercase h-16 overflow-hidden text-clip"
+        className=" relative p-2 uppercase h-16
+         text-white lg:text-2xl
+         overflow-hidden text-clip"
+        style={
+          { textShadow: '2px 2px 6px rgba(0, 0, 0, 1)' }
+        }
       >
         {title}
       </Typography>
     </Card>
   );
 }
+

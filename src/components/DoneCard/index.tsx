@@ -17,57 +17,66 @@ export default function DoneCard({ recipe }: DoneCard) {
     if (type === 'drink') { return navigate(`/drinks/${id}`) }
   }
 
+  const textStyle = {
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 1)',
+    color: 'white',
+  }
+
+
 
   return (
 
-    <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center mb-40 p-2">
+    <div className="flex mx-auto justify-center gap-7
+    flex-wrap mt-4 max-w-[1000px]">
       {recipe.map(({ id, alcoholicOrNot, category, doneDate, image, name, nationality, tags, type, detailLink }) => {
         const isMeal = type === 'meal';
         const date = new Date(doneDate).toLocaleDateString('en-US')
         return (
-          <Card className="lg:w-[350px] h-auto
-             mb-5 p-0 flex bg-light-blue-50
-             rounded-lg mx-auto flex-wrap"
+          <Card className="relative w-72 h-72 m-auto mb-8 bg-cover
+          flex-col justify-between rounded-lg"
+            style={{ backgroundImage: `url(${image})` }}
             key={id}>
-            <img
-              className="rounded-lg"
-              onClick={() => handleClickNavigate(type, id)}
-              src={image} alt={name} />
-            <div className="">
-              <div className="flex gap-8 justify-center">
-                <p
-                  className="text-2xl font-bold overflow-hidden text-clip h-9"
-                  onClick={() => handleClickNavigate(type, id)}
-                >
-                  {name}</p>
-              </div>
-              {isMeal ?
-                <p className="mt-2 ml-2">{nationality} - {category}</p>
-                : <p className="h-[24px] mt-2"></p>}
+            <div className="absolute inset-0 bg-black opacity-20"></div>
+            <div className="flex gap-8 p-2">
               <p
-                className="text-lg font-bold ml-2"
+                className="relative text-2xl font-bold overflow-hidden text-clip h-9"
+                style={textStyle}
+                onClick={() => handleClickNavigate(type, id)}
+              >
+                {name}
+              </p>
+            </div>
+            {isMeal ?
+              <p
+                style={textStyle}
+                className="relative mt-2 ml-2 font-bold">{nationality} - {category}</p>
+              : <p className="mt-2 font-bold"></p>}
+            <div className="flex gap-1 justify-center mt-2 overflow-hidden p-2">
+              {isMeal && tags.slice(0, 4).map((tag, index) => (
+                <p
+                  key={index}
+                  className="bg-light-green-900  mt-1 text-sm rounded-lg
+                     text-center p-2 text-white overflow-hidden"
+                >{tag}</p>))}
+            </div>
+            {!isMeal && <p
+              className="bg-light-green-900  mt-1 text-sm rounded-lg
+              text-center p-2 text-white overflow-hidden"
+            >{alcoholicOrNot}</p>}
+            <div className="flex justify-between items-center p-2">
+              <button
+                className="p-2 mt-1"
+                onClick={() => writeClipboardText(detailLink)}
+              >
+                <img src={share_icon} className="relative w-8" alt="share url" />
+              </button>
+              <p
+                style={textStyle}
+                className="relative text-lg font-bold ml-2 lg:text-xl"
               >
                 Done in: {date}
               </p>
-              <div className="flex gap-3 justify-center mt-2 overflow-hidden">
-                {isMeal && tags.slice(0, 4).map((tag, index) => (
-                  <p
-                    key={index}
-                    className="bg-light-green-900  mt-1 text-sm rounded-lg
-                     text-center p-2 text-white font-medium"
-                  >{tag}</p>))}
-              </div>
-              {!isMeal && <p
-                className="bg-light-green-900 text-sm rounded-lg
-                 text-center p-1 mt-1 text-white font-medium"
-              >{alcoholicOrNot}</p>}
             </div>
-            <button
-              className="p-2 mt-1"
-              onClick={() => writeClipboardText(detailLink)}
-            >
-              <img src={share_icon} className="w-8" alt="share url" />
-            </button>
           </Card>
         )
       })}

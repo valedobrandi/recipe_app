@@ -12,7 +12,8 @@ export default function Recipes({ recipes }: RecipesProps) {
   return (
     <div className="mx-auto mb-40">
       <FilterByCategory />
-      <div className="flex justify-center gap-7 flex-wrap mt-4">
+      <div className="flex mx-auto justify-center gap-7
+       flex-wrap mt-4 max-w-[1000px]">
         {recipes &&
           recipes.map((recipe: RecipeType) => (
             <div

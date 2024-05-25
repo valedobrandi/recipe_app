@@ -19,7 +19,7 @@ export default function DoneRecipes() {
     <>
       <Header title="Done Recipes" isSearch={false} icon={done_recipe_logo} />
       <BtnFilters setFilter={setFilter} />
-      <DoneCard recipe={filterTypeDoneRecipes} />
+        <DoneCard recipe={filterTypeDoneRecipes} />
       <Footer />
     </>
   );

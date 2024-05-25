@@ -50,12 +50,12 @@ export default function FavAndCopyBtn({ id }: { id: string }) {
   return (
     <div className="flex justify-center">
       {isValid && <button onClick={() => writeClipboardText(window.location.href)} data-testid="share-btn">
-        <img src={share_icon} alt="" className="lg:w-16" />
+        <img src={share_icon} alt="" className="w-8 lg:w-16" />
       </button>}
-      {isValid && <button onClick={handleFavorite} data-testid="favorite-btn">
+      {isValid && <button onClick={handleFavorite}>
         {isFavorite ?
-          <img src={like_icon} alt="like" className="ml-12 lg:w-16" />
-          : <img src={dislike_icon} alt="dislike" style={{ filter: "brightness(0) invert(1)" }} className="ml-12 lg:w-16 fill-light-green-50" />
+          <img src={like_icon} alt="like" className="ml-12 w-8 lg:w-16" style={{ filter: "hue-rotate(-90deg)" }} />
+          : <img src={dislike_icon} alt="dislike" style={{ filter: "brightness(0) invert(1)" }} className="ml-12 w-8 lg:w-16 fill-light-green-50" />
         }
       </button>}
     </div>
