@@ -34,6 +34,7 @@ export default function Footer() {
 
   return (
     <>
+      <div className="mt-40"></div>
       <Navbar className="fixed bottom-0 z-10 mx-auto h-max max-w-[1435px] bg-deep-purple-900
        rounded-none">
         <div className="flex items-center justify-around text-blue-gray-900 px-4">
@@ -90,7 +91,6 @@ export default function Footer() {
           </div>
         </Collapse>
       </Navbar>
-      <div className="mt-40"></div>
     </>
   );
 }

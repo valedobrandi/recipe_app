@@ -20,48 +20,54 @@ export default function DoneCard({ recipe }: DoneCard) {
 
   return (
 
-    <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center mb-40 ">
+    <div className="my-6 lg:ml-36 lg:mr-36 flex flex-wrap gap-6 justify-center mb-40 p-2">
       {recipe.map(({ id, alcoholicOrNot, category, doneDate, image, name, nationality, tags, type, detailLink }) => {
         const isMeal = type === 'meal';
         const date = new Date(doneDate).toLocaleDateString('en-US')
         return (
-          <Card className="lg:min-w-[500px] lg:h-auto w-fit h-auto
-             mb-5 p-0 flex flex-row border-2 border-gray-500
-              rounded-lg mx-auto flex-wrap" key={id}>
+          <Card className="lg:w-[350px] h-auto
+             mb-5 p-0 flex bg-light-blue-50
+             rounded-lg mx-auto flex-wrap"
+            key={id}>
             <img
-              className="lg:w-56 lg:h-auto lg:rounded-lg lg:self-start lg:ml-0 lg:p-0 w-auto h-fit self-center mx-auto p-2"
+              className="rounded-lg"
               onClick={() => handleClickNavigate(type, id)}
-              data-testid="${index}-horizontal-image" src={image} alt="" />
-            <div className=" lg:ml-6 mx-auto flex flex-col lg:justify-between items-center p-4 ">
-              <div className="flex gap-6 justify-between">
+              src={image} alt={name} />
+            <div className="">
+              <div className="flex gap-8 justify-center">
                 <p
-                  className="text-2xl font-bold"
+                  className="text-2xl font-bold overflow-hidden text-clip h-9"
                   onClick={() => handleClickNavigate(type, id)}
-                  data-testid="${index}-horizontal-name">{name}</p>
-                <button
-                  data-testid="${index}-horizontal-share-btn"
-                  onClick={() => writeClipboardText(detailLink)}
                 >
-                  <img src={share_icon} className="w-8" alt="share url" />
-                </button>
+                  {name}</p>
               </div>
-              {isMeal && <p data-testid="${index}-horizontal-top-text">{nationality} - {category}</p>}
+              {isMeal ?
+                <p className="mt-2 ml-2">{nationality} - {category}</p>
+                : <p className="h-[24px] mt-2"></p>}
               <p
-                className="text-sm font-bold"
+                className="text-lg font-bold ml-2"
               >
                 Done in: {date}
               </p>
-              <div className="lg:flex lg:gap-2">
-                {isMeal && tags.map((tag, index) => (
+              <div className="flex gap-3 justify-center mt-2 overflow-hidden">
+                {isMeal && tags.slice(0, 4).map((tag, index) => (
                   <p
                     key={index}
-                    className="bg-gray-400 mt-1 text-sm rounded-lg text-center p-[2px]"
+                    className="bg-light-green-900  mt-1 text-sm rounded-lg
+                     text-center p-2 text-white font-medium"
                   >{tag}</p>))}
               </div>
               {!isMeal && <p
-                className="bg-gray-400 text-sm rounded-lg text-center p-1 mt-1"
+                className="bg-light-green-900 text-sm rounded-lg
+                 text-center p-1 mt-1 text-white font-medium"
               >{alcoholicOrNot}</p>}
             </div>
+            <button
+              className="p-2 mt-1"
+              onClick={() => writeClipboardText(detailLink)}
+            >
+              <img src={share_icon} className="w-8" alt="share url" />
+            </button>
           </Card>
         )
       })}
