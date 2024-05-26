@@ -15,9 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <UniqueRecipeProvider>
         <DrinksProvider>
           <MealsProvider>
-            <ThemeProvider>
+            
             <App />
-            </ThemeProvider>
+          
           </MealsProvider>
         </DrinksProvider>
       </UniqueRecipeProvider>
