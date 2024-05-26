@@ -1,32 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe App README</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
 <h1>Recipe App</h1>
 
-<p>Welcome to the Recipe App! This is a project application from Trybe course that helps you discover, save, and share delicious food and drink recipes.</p>
+<p>Welcome to the Recipe App! This is a project from my course at Trybe, that helps you discover, save, and share delicious food and drink recipes.</p>
 
 <h2>Features</h2>
 <ul>
@@ -91,5 +65,4 @@
 <h2>Contact</h2>
 <p>If you have any questions or suggestions, feel free to reach out to us at <a href="mailto:support@example.com">support@example.com</a>.</p>
 
-</body>
-</html>
+
