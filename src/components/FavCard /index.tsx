@@ -7,6 +7,11 @@ type FavCard = {
   recipe: FavoriteType[];
 };
 
+const textStyle = {
+  textShadow: '2px 2px 6px rgba(0, 0, 0, 1)',
+  color: 'white',
+}
+
 
 export default function FavCard({ recipe }: FavCard) {
   const navigate = useNavigate()
@@ -23,27 +28,34 @@ export default function FavCard({ recipe }: FavCard) {
         const isMeal = type === 'meal';
 
         return (
-          <Card className="lg:w-[350px] h-auto
-            mb-5 p-0 flex bg-light-blue-50
-             rounded-lg mx-auto flex-wrap" key={id}>
-            <img
-              className="lg:w-56 lg:h-auto lg:rounded-lg lg:self-start lg:ml-0 lg:p-0 w-auto h-fit self-center mx-auto"
-              onClick={() => handleClickNavigate(type, id)}
-              src={image} alt={name} />
-            <div className=" lg:ml-6 mx-auto flex flex-col lg:justify-between items-center p-4 ">
-              <div className="flex flex-wrap gap-6 justify-center lg:items-start items-center mb-4">
+          <Card className="relative w-72 h-72 mb-8 bg-cover
+          flex-col justify-between rounded-lg"
+            style={{ backgroundImage: `url(${image})` }}
+            key={id}
+          >
+            <div className="absolute inset-0 bg-black opacity-20"></div>
+            <div className=" lg:ml-6 mx-auto flex flex-col justify-between items-center p-4 ">
+              <div className="flex flex-wrap gap-6 items-center">
                 <p
-                  className="text-2xl font-bold"
+                  style={textStyle}
+                  className="relative text-2xl font-bold cursor-pointer"
                   onClick={() => handleClickNavigate(type, id)}
                 >
                   {name}
                 </p>
-                {isMeal && <p>{nationality} - {category}</p>}
+                {isMeal && (
+                  <p
+                    className="relative"
+                    style={textStyle}
+                  >{nationality} - {category}</p>)}
                 {!isMeal && <p
-                  className="bg-light-green-900 text-sm rounded-lg text-center p-1 mt-1 text-white font-medium"
+                  className="bg-light-green-900 text-sm rounded-lg
+                   text-center p-1 mt-1 text-white font-medium relative"
                 >{alcoholicOrNot}</p>}
               </div>
-                <FavAndCopyBtn id={id} />
+            </div>
+            <div className="p-4">
+              <FavAndCopyBtn id={id} />
             </div>
           </Card>
         )

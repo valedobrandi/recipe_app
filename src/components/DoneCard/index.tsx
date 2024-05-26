@@ -32,7 +32,7 @@ export default function DoneCard({ recipe }: DoneCard) {
         const isMeal = type === 'meal';
         const date = new Date(doneDate).toLocaleDateString('en-US')
         return (
-          <Card className="relative w-72 h-72 m-auto mb-8 bg-cover
+          <Card className="relative w-72 h-72  mb-8 bg-cover
           flex-col justify-between rounded-lg"
             style={{ backgroundImage: `url(${image})` }}
             key={id}>
