@@ -6,7 +6,6 @@ import MealsProvider from "./Provider/MealsProvider.tsx";
 import DrinksProvider from "./Provider/DrinksProvider.tsx";
 import UniqueRecipeProvider from "./Provider/UniqueRecipeProvider.tsx";
 import LocalStoreProvider from "./Provider/LocalStoreProvider.tsx";
-import { ThemeProvider } from "@material-tailwind/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
  
@@ -15,9 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <UniqueRecipeProvider>
         <DrinksProvider>
           <MealsProvider>
-            
             <App />
-          
           </MealsProvider>
         </DrinksProvider>
       </UniqueRecipeProvider>

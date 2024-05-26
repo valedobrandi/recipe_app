@@ -14,8 +14,8 @@ export function ProfileCard({ recipe }: ProfileCardPropsType) {
       data-testid="bg-card-image"
       style={{ backgroundImage: `url(${img})` }}
       className="relative lg:w-60 lg:h-60 w-40 h-40 m-auto mb-8 bg-cover
-       flex justify-center cursor-pointer">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+       flex justify-center cursor-pointer rounded-lg">
+        <div className="absolute inset-0 bg-black opacity-20 rounded-lg"></div>
       <Typography
         variant="h6"
         color="blue-gray"

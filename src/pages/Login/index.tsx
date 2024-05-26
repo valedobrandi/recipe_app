@@ -82,6 +82,15 @@ export default function Login() {
           >
             Register
           </Button>
+          <Button
+            variant="success"
+            size="lg"
+            type="button"
+            onClick={handleFormSubmit}
+            className=" w-full mt-3"
+            >
+            Just Go!
+          </Button>
         </form>
       </Card>
     </div>
