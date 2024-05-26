@@ -54,7 +54,7 @@ export default function FavAndCopyBtn({ id }: { id: string }) {
       </button>}
       {isValid && <button onClick={handleFavorite}>
         {isFavorite ?
-          <img src={like_icon} alt="like" className="ml-12 w-14 lg:w-16" />
+          <img src={like_icon} alt="like" className="w-14 lg:w-16" />
           : <img src={dislike_icon} alt="dislike" style={{ filter: "brightness(0) invert(1)" }}
            className="ml-12 w-6 lg:w-12 fill-light-green-50" />
         }

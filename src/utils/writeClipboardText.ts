@@ -8,6 +8,7 @@ export const writeClipboardText = async (url = '') => {
       Swal.fire({
         title: "Link copied!",
         timer: 500,
+        showConfirmButton: false,
       });
     } catch (error) {
       if (error instanceof Error) {

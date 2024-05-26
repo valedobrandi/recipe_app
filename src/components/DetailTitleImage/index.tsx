@@ -24,8 +24,8 @@ export default function DetailTitleImage({ img, title, category }: DetailTitleIm
                     <div className="text-white">
                         <div className="flex justify-between items-center" >
                             <div className="flex items-center">
-                            <img src={drink_icon} alt="" className="lg:w-16"/>
-                            <h4 className="ml-6  text-xl lg:text-4xl font-semibold">{category}</h4>
+                            <img src={drink_icon} alt="" className="w-12"/>
+                            <h4 className="ml-6 text-xl lg:text-4xl font-semibold">{category}</h4>
                             </div>
                             <div className="flex items-center ">
                             <FavAndCopyBtn id={paramsId} />
