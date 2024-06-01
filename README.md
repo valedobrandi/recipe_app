@@ -64,38 +64,40 @@
 
 <h2>Git Commits historic</2>
 
+<ul>
+  <li>4618a07 update readme</li>
+  <li>11d4e90 README</li>
+  <li>6620ee5 add button login screen</li>
+  <li>00318c4 remove themeprovider</li>
+  <li>2a4e6b2 resize card profile</li>
+  <li>af713ea favorite cards style</li>
+  <li>73b1654 (install-react-share-library) like icon</li>
+  <li>d4f7fd6 search bar input changed</li>
+  <li>c7f28cc re-style cards</li>
+  <li>0bad2b8 style favorite and donerecipe card</li>
+  <li>7592eb9 fix select test 02</li>
+  <li>50643fa margin top</li>
+  <li>c602cd6 Merge pull request #5 from valedobrandi/detail-recipes-test</li>
+  <li>88d5f3d (origin/detail-recipes-test, detail-recipes-test) search bar switch state</li>
+  <li>328b3da text decoration</li>
+  <li>f18c285 test title</li>
+  <li>a142417 full test implement</li>
+  <li>7585b59 recipe details test file</li>
+  <li>7eae1c9 first test</li>
+  <li>3f37f43 Merge pull request #4 from valedobrandi/tests-search_bar</li>
+  <li>5cdb4b8 (origin/tests-search_bar, tests-search_bar) all tests checked</li>
+  <li>7eebb5e Merge pull request #3 from valedobrandi/test-03</li>
+  <li>8efb7eb (origin/test-03, test-03) drink page tests</li>
+  <li>70a0363 teste_03</li>
+  <li>a7bc6b7 Merge pull request #2 from valedobrandi/test-02</li>
+  <li>c3b14a9 (origin/test-02, test-02) select by category test</li>
+  <li>de63fca Merge pull request #1 from valedobrandi/install-vitest</li>
+  <li>34d8417 (origin/install-vitest, install-vitest) route /meals test</li>
+  <li>fd3939a first test</li>
+  <li>0c80bac create link in the recommendation card</li>
+  <li>a457c13 first commit</li>
+</ul>
 
-4618a07 update readme
-11d4e90 README
-6620ee5 add button login screen
-00318c4 remove themeprovider
-2a4e6b2 resize card profile
-af713ea favorite cards style
-73b1654 (install-react-share-library) like icon
-d4f7fd6 search bar input changed
-c7f28cc re-style cards
-0bad2b8 style favorite and donerecipe card
-7592eb9 fix select test 02
-50643fa margin top
-c602cd6 Merge pull request #5 from valedobrandi/detail-recipes-test
-88d5f3d (origin/detail-recipes-test, detail-recipes-test) search bar switch state
-328b3da text decoration
-f18c285 test title
-a142417 full test implement
-7585b59 recipe details test file
-7eae1c9 first test
-3f37f43 Merge pull request #4 from valedobrandi/tests-search_bar
-5cdb4b8 (origin/tests-search_bar, tests-search_bar) all tests checked
-7eebb5e Merge pull request #3 from valedobrandi/test-03
-8efb7eb (origin/test-03, test-03) drink page tests
-70a0363 teste_03
-a7bc6b7 Merge pull request #2 from valedobrandi/test-02
-c3b14a9 (origin/test-02, test-02) select by category test
-de63fca Merge pull request #1 from valedobrandi/install-vitest
-34d8417 (origin/install-vitest, install-vitest) route /meals test
-fd3939a first test
-0c80bac create link in the recommendation card
-a457c13 first commit
 
 <h2>Contributing</h2>
 <p>We welcome contributions from the community. To contribute:</p>
