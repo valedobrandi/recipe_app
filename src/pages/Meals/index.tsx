@@ -15,7 +15,7 @@ export default function Meals() {
 
 
   if (loading || loadingCategories) return <Loading />
-  
+    
   return (
     <>
       <Header title="MEALS" icon={icon_meals} />

@@ -1,6 +1,6 @@
 export type RecipeDataType = {
   meals: MealsDataType[] 
-  drinks: DrinskDataType[]
+  drinks: DrinksDataType[]
 };
 
 export type MealsDataType =   {
@@ -60,7 +60,7 @@ export type MealsDataType =   {
   dateModified: string;
   }
 
-export type DrinskDataType = {
+export type DrinksDataType = {
   [key: string]: string;
   idDrink: string;
   strDrink: string;
@@ -152,7 +152,7 @@ export type CategoriesType = {
 
  export type ContextType = {
   drinks?: RecipeType[] | null;
-  meals?: RecipeType[] | null;
+  meals?: RecipeType[] | undefined;
   error: unknown;
   loading: boolean;
   handleFetch: (radio: string, input: string) => void,
@@ -190,5 +190,7 @@ export type RecipeDetailType = {
 }
 
 export type DataType = 
-   {meals: MealsDataType[]} | { drinks: DrinskDataType[] } | [];
+   {meals: MealsDataType[]} | { drinks: DrinksDataType[] } | [];
+
+
 

@@ -1,12 +1,12 @@
 import RecipesContext from "../Context/DrinksContext";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
-  DrinskDataType,
-  RecipeType,
   CategoriesType,
 } from "../types/type";
 import useFetch from "../Hooks/useFetch";
+
+import { DRINKS_CATEGORIES_API, DRINKS_INGREDIENT_API, DRINKS_NAME_API, DRINKS_RANDOM_API } from "./utils/drinksAPI";
+import useSearchRecipe from "../Hooks/useSearchRecipe";
 type DrinksProviderType = {
   children: React.ReactNode;
 };
@@ -17,36 +17,30 @@ type EffectCategoryType = {
 };
 
 export default function DrinksProvider({ children }: DrinksProviderType) {
+  useEffect(() => {
+    fetchData(DRINKS_NAME_API);
+  }, []);
+
   const [select, setSelect] = useState("All")
-  const [loading, setLoading] = useState(true);
+/*   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>();
-  const [drinks, setDrinks] = useState<RecipeType[]>([]);
+  const [drinks, setDrinks] = useState<RecipeType[]>([]); */
 
   
   const categoryRef = useRef<string>('');
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
-  const { data: categories, loading: loadingCategories } = useFetch(
-    "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"
-  ) as EffectCategoryType;
+  const {
+     data: categories, 
+     loading: loadingCategories 
+    } = useFetch(`${DRINKS_CATEGORIES_API}list`) as EffectCategoryType;
 
-  useEffect(() => {
-    const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-    fetchData(url);
-  }, []);
+    const {
+      data: drinks, error, fetchData, loading,
+    } = useSearchRecipe('drinks', 'idDrink')
 
-  const filterDataKeys = (data: DrinskDataType[]) => {
-    return data.map((value) => {
-      return {
-        id: value.idDrink,
-        title: value.strDrink,
-        img: value.strDrinkThumb,
-        categories: value.strCategory,
-      };
-    });
-  };
 
-  const fetchData = async (url = "", redirect = true) => {
+/*   const fetchData = async (url = "", redirect = true) => {
     setLoading(true);
     try {
       const response = await fetch(url);
@@ -68,22 +62,18 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   const handleFetch = async (radio = "", input = "") => {
     switch (radio) {
       case "Ingredient":
-        fetchData(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${input}`
-        );
+        fetchData(`${DRINKS_INGREDIENT_API}${input}`);
         break;
       case "Name":
-        fetchData(
-          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`
-        );
+        fetchData(`${DRINKS_NAME_API}${input}`);
         break;
       case "Random recipe":
-        fetchData(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
+        fetchData(DRINKS_RANDOM_API);
         break;
       default:
         break;

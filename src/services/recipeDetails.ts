@@ -1,7 +1,7 @@
-import { DrinskDataType, MealsDataType } from "../types/type";
+import { DrinksDataType, MealsDataType } from "../types/type";
 
 export const reduceKeys = (
-    value: MealsDataType | DrinskDataType,
+    value: MealsDataType | DrinksDataType,
     string: string
   ) => {
     const array = Object.keys(value).filter((key) => key.includes(string));
@@ -14,7 +14,7 @@ export const reduceKeys = (
   };
 
 
-export const recipeDetails = (data: DrinskDataType[] | MealsDataType[], isMeals: boolean) => {
+export const recipeDetails = (data: DrinksDataType[] | MealsDataType[], isMeals: boolean) => {
     return data.map((value) => {
       const ingredients = reduceKeys(value, "strIngredient");
       const measures = reduceKeys(value, "strMeasure");

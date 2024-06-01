@@ -1,6 +1,6 @@
-import { DrinskDataType, MealsDataType } from "../types/type"
+import { DrinksDataType, MealsDataType } from "../types/type"
 
-export const favoriteStore = (data: MealsDataType[] | DrinskDataType[], isMeal = false, url = '') => {
+export const favoriteStore = (data: MealsDataType[] | DrinksDataType[], isMeal = false, url = '') => {
     const date = new Date().toDateString()
 
     

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { CategoriesType, MealsDataType, RecipeType } from "../types/type";
-import { useNavigate } from "react-router-dom";
+import { CategoriesType } from "../types/type";
 import MealsContext from "../Context/MealsContext";
 import useFetch from "../Hooks/useFetch";
+import { MEALS_NAME_API, MEALS_CATEGORIES_API, MEALS_INGREDIENT_API, MEALS_RANDOM_API } from "./utils/MealsApi";
+import useSearchRecipe from "../Hooks/useSearchRecipe";
 
 type MealsProviderType = {
   children: React.ReactNode;
@@ -14,47 +15,42 @@ type EffectCategoryType = {
 };
 
 export default function MealsProvider({ children }: MealsProviderType) {
-  const [select, setSelect] = useState("All")
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<unknown>();
-  const [meals, setMeals] = useState<RecipeType[]>([]);
-
-  const categoryRef = useRef<string>('');
-  const navigate = useNavigate();
   
-  const { data: categories, loading: loadingCategories } = useFetch(
-    "https://www.themealdb.com/api/json/v1/1/list.php?c=list"
-  ) as EffectCategoryType;
-
   useEffect(() => {
-    const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
-    fetchData(url);
+    fetchData(MEALS_NAME_API);
   }, []);
 
+  const [select, setSelect] = useState("All")
+/*   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<unknown>();
+  const [meals, setMeals] = useState<RecipeType[]>([]); */
 
-  const filterDataKeys = (data: MealsDataType[]) => {
-    return data.map((value) => {
-      return {
-        id: value.idMeal,
-        title: value.strMeal,
-        img: value.strMealThumb,
-        categories: value.strCategory,
-      };
-    });
-  };
+  const categoryRef = useRef<string>('');
+  //const navigate = useNavigate();
 
-  const fetchData = async (url = "", redirect = true) => {
+  const {
+    data: categories,loading: loadingCategories
+  } = useFetch(`${MEALS_CATEGORIES_API}list`) as EffectCategoryType;
+
+  const {
+    data: meals, error, fetchData, loading,
+  } = useSearchRecipe('meals', 'strMeals')
+
+
+
+
+/*   const fetchData = async (url = "", redirect = true) => {
     setLoading(true);
     try {
       const response = await fetch(url);
       const data = await response.json()
-      
+
       if (data.meals.length === 0 || data.meals === 'null') {
         return window.alert("Receita não encontrada!");
       }
 
       if (data.meals.length === 1 && redirect) {
-       return navigate(`${location.pathname}/${data.meals[0].idMeal}`);
+        return navigate(`${location.pathname}/${data.meals[0].idMeal}`);
       }
 
       setMeals(filterDataKeys(data.meals));
@@ -67,22 +63,18 @@ export default function MealsProvider({ children }: MealsProviderType) {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   const handleFetch = async (radio = "", input = "") => {
     switch (radio) {
       case "Ingredient":
-        fetchData(
-          `https://www.themealdb.com/api/json/v1/1/filter.php?i=${input}`
-        );
+        fetchData(`${MEALS_INGREDIENT_API}${input}`);
         break;
       case "Name":
-        fetchData(
-          `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
-        );
+        fetchData(`${MEALS_NAME_API}${input}`);
         break;
       case "Random recipe":
-        fetchData(`https://www.themealdb.com/api/json/v1/1/random.php`);
+        fetchData(MEALS_RANDOM_API);
         break;
       default:
         break;
@@ -91,22 +83,21 @@ export default function MealsProvider({ children }: MealsProviderType) {
 
   const fetchByCategory = (category: string) => {
     console.log(category);
-    
+   
+
     setSelect(category)
     if (category === "All" || categoryRef.current === category) {
-      const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
       categoryRef.current = category;
       setSelect('All')
-      return fetchData(url, false);
+      return fetchData(MEALS_NAME_API, false);
     }
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
-    fetchData(url, false);
+    fetchData(`${MEALS_INGREDIENT_API}${category}`, false);
     categoryRef.current = category;
   };
 
   return (
     <MealsContext.Provider
-      value={{ select, meals, error, loading, handleFetch, fetchByCategory, categories, loadingCategories  }}
+      value={{ select, meals, error, loading, handleFetch, fetchByCategory, categories, loadingCategories }}
     >
       {children}
     </MealsContext.Provider>
