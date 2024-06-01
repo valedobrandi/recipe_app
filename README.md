@@ -1,11 +1,13 @@
 <h1>Recipe App</h1>
 
-<p>Welcome to the Recipe App! This is a project from my course at Trybe, that helps you discover, save, and share delicious food and drink recipes.</p>
+<p>Welcome to the Recipe App! This is a project from my FullStack Developer course at 'Trybe', that helps you discover, save, and share delicious food and drink recipes.</p>
+<p>The first part of this project is the implementation of a responsive React front-end, with a test suite to monitor the application's health.</p>
+<p>The second part, which is currently being developed, will include a Node.js server and SQL database integration.</p>
 
 <h2>Features</h2>
 <ul>
     <li><strong>Browse Recipes</strong>: Explore a wide variety of recipes for food and beverages from different cuisines.</li>
-    <li><strong>Search Functionality</strong>: Quickly find recipes by name or ingredient, even find random recipe.</li>
+    <li><strong>Search Functionality</strong>: Quickly find recipes by name or ingredient, even find a random recipe.</li>
     <li><strong>Save Favorites</strong>: Mark recipes as favorites for easy access later.</li>
     <li><strong>Share Recipes</strong>: Share your favorite recipes with friends and family.</li>
 </ul>
@@ -46,8 +48,42 @@
     <li><strong>Search</strong>: Use the search bar at the top to find recipes based on your criteria.</li>
     <li><strong>Save Favorites</strong>: Click the heart icon on a recipe to save it to your favorites.</li>
     <li><strong>Share</strong>: Use the share button on a recipe page to share it via social media or email.</li>
-    <li><strong>Create</strong>: Go to the "Create Recipe" section in your profile to add a new recipe.</li>
 </ol>
+
+<h2>Git Commits historic</2>
+
+
+4618a07 update readme
+11d4e90 README
+6620ee5 add button login screen
+00318c4 remove themeprovider
+2a4e6b2 resize card profile
+af713ea favorite cards style
+73b1654 (install-react-share-library) like icon
+d4f7fd6 search bar input changed
+c7f28cc re-style cards
+0bad2b8 style favorite and donerecipe card
+7592eb9 fix select test 02
+50643fa margin top
+c602cd6 Merge pull request #5 from valedobrandi/detail-recipes-test
+88d5f3d (origin/detail-recipes-test, detail-recipes-test) search bar switch state
+328b3da text decoration
+f18c285 test title
+a142417 full test implement
+7585b59 recipe details test file
+7eae1c9 first test
+3f37f43 Merge pull request #4 from valedobrandi/tests-search_bar
+5cdb4b8 (origin/tests-search_bar, tests-search_bar) all tests checked
+7eebb5e Merge pull request #3 from valedobrandi/test-03
+8efb7eb (origin/test-03, test-03) drink page tests
+70a0363 teste_03
+a7bc6b7 Merge pull request #2 from valedobrandi/test-02
+c3b14a9 (origin/test-02, test-02) select by category test
+de63fca Merge pull request #1 from valedobrandi/install-vitest
+34d8417 (origin/install-vitest, install-vitest) route /meals test
+fd3939a first test
+0c80bac create link in the recommendation card
+a457c13 first commit
 
 <h2>Contributing</h2>
 <p>We welcome contributions from the community. To contribute:</p>
@@ -59,10 +95,7 @@
     <li>Open a pull request.</li>
 </ol>
 
-<h2>License</h2>
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
-
 <h2>Contact</h2>
-<p>If you have any questions or suggestions, feel free to reach out to us at <a href="mailto:support@example.com">support@example.com</a>.</p>
+<p>If you have any questions or suggestions, feel free to reach out to us!</p>
 
 
