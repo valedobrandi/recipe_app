@@ -62,7 +62,7 @@
     <li><strong>Share</strong>: Use the share button on a recipe page to share it via social media or email.</li>
 </ol>
 
-<h2>Git Commits historic</2>
+<h2>Git Commits historic</h2>
 
 <ul>
   <li>4618a07 update readme</li>
