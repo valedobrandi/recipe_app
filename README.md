@@ -65,7 +65,7 @@
 <h2>Git Commits historic</2>
 
 <ul>
-  <li>4618a07 update readme</li>
+  <li><p>4618a07 update readme</p></li>
   <li>11d4e90 README</li>
   <li>6620ee5 add button login screen</li>
   <li>00318c4 remove themeprovider</li>
