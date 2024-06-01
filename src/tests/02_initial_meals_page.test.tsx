@@ -25,7 +25,6 @@ describe('Route "/meals"', () => {
     const backGroundImages = screen.getAllByTestId('bg-card-image')
     expect(backGroundImages[0])
     .toHaveStyle(`background-image: url(${meals.meals[0].strMealThumb})`)
-    screen.debug()
     expect(backGroundImages[1])
     .toHaveStyle(`background-image: url(${meals.meals[1].strMealThumb})`)
   });

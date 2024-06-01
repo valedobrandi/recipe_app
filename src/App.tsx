@@ -4,10 +4,10 @@ import Login from "./pages/Login";
 import Meals from "./pages/Meals";
 import Profile from "./pages/Profile";
 import Drinks from "./pages/Drinks";
-import Details from "./components/Details";
 import DoneRecipes from "./pages/DoneRecipes";
 import FavoriteRecipes from "./pages/FavoriteRecipes";
 import RecipeInProgress from "./pages/RecipeInProgress";
+import Details from "./pages/Details";
 
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/done-recipes" element={<DoneRecipes />} />
       <Route path="/favorite-recipes" element={<FavoriteRecipes />} />
-      <Route path="/meals/:id" element={<Details />} />
-      <Route path="/drinks/:id" element={<Details />} />
+      <Route path="/meals/:id" element={<Details type="meals" />} />
+      <Route path="/drinks/:id" element={<Details type="drinks"/>} />
       <Route path="/meals/:id/in-progress" element={<RecipeInProgress />} />
       <Route path="/drinks/:id/in-progress" element={<RecipeInProgress />} />
     </Routes>

@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ProfileCard } from "../ProfileCard";
 import { Link } from "react-router-dom";
+import { RecipeCard } from "../RecipeCard";
 
 type TypeRecomendationProps = {
   recipes: RecipeType[]
@@ -17,7 +18,7 @@ export default function Recomendation({
 
   const PATH = window.location.pathname.includes('drinks') ? 'meals' : 'drinks'
 
-  
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -41,13 +42,18 @@ export default function Recomendation({
     <>
       <Carousel responsive={responsive} infinite={true}>
         {recipes &&
-          recipes.map((recipe, index) => (
-            <Link 
-            key={recipe.id}
-            to={`../${PATH}/${recipe.id}`}
-            reloadDocument
-          >
-              <ProfileCard key={index} recipe={recipe} />
+          recipes.map((recipe) => (
+            <Link
+              key={recipe.id}
+              to={`../${PATH}/${recipe.id}`}
+              reloadDocument
+            >
+              <RecipeCard
+                key={recipe.id}
+                id={recipe.id}
+                img={recipe.img}>
+                <ProfileCard recipe={recipe} />
+              </RecipeCard>
             </Link>
           ))}
       </Carousel>

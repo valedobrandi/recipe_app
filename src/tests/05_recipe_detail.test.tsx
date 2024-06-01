@@ -36,7 +36,7 @@ describe('Route "/drinks"', async () => {
     const LIKE_BTN = screen.getByAltText(/dislike/i)
     expect(LIKE_BTN).toBeInTheDocument();
     await userEvent.click(LIKE_BTN);
-    await userEvent.click(screen.getByRole('button', { name: /start recipe/i }));
+    await userEvent.click(screen.getByRole('button', { name: /start/i }));
 
     const CHECK_BOX_INGREDIENT = await screen.findAllByRole('checkbox');
     expect(CHECK_BOX_INGREDIENT).toHaveLength(3);
