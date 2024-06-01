@@ -41,6 +41,18 @@
 </ol>
 <p>Then open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> in your web browser to view the app.</p>
 
+<h4>Tests</h4>
+<ol>
+    <li>Navigate into the project directory:
+        <pre><code>cd recipe-app</code></pre>
+    </li>
+    <li>Install the dependencies:
+        <pre><code>npm install</code></pre>
+    </li>
+    <li>Run Tests:
+        <pre><code>npm run test</code></pre>
+    </li>
+</ol>
 
 <h2>Usage</h2>
 <ol>
