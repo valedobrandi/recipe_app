@@ -5,19 +5,21 @@ import Recipes from "../../components/Recipes";
 import DrinksContext from "../../Context/DrinksContext";
 import drinkIcon from "../../assets/icone-bebida.svg"
 import Loading from "../../components/Loading";
+import FilterByCategory from "../../components/FilterByCategoryButtons";
 
 export default function Drinks() {
 
 
-  const { drinks, loading, loadingCategories } = useContext(DrinksContext);
+  const { drinks, loading } = useContext(DrinksContext);
 
-
-  if (loading || loadingCategories) return <Loading />
 
   return (
     <>
       <Header title="Drinks" icon={drinkIcon} />
-      {drinks && <Recipes recipes={drinks.slice(0, 12)} />}
+      <FilterByCategory />
+      {drinks && !loading
+        ? <Recipes recipes={drinks.slice(0, 12)} />
+        : <Loading />}
       <Footer />
     </>
   );

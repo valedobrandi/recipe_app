@@ -5,24 +5,25 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import icon_meals from "../../assets/icone-comida.svg"
 import Loading from "../../components/Loading";
+import FilterByCategory from "../../components/FilterByCategoryButtons";
 
 export default function Meals() {
   const {
     meals,
     loading,
-    loadingCategories,
   } = useContext(MealsContext);
 
 
-  if (loading || loadingCategories) return <Loading />
-    
   return (
     <>
       <Header title="MEALS" icon={icon_meals} />
-      {meals && <Recipes recipes={meals.slice(0, 12)} />}
+      <FilterByCategory />
+      {meals && !loading
+        ? <Recipes recipes={meals.slice(0, 12)} />
+        : <Loading />}
       <Footer />
     </>
   );
 }
 
-//REQUERIMENTO: 18, 19, 20
+

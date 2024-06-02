@@ -19,14 +19,14 @@ describe('Route "/meals"', () => {
       { route: '/meals' },
     );
 
-    expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(2);
+    expect(await screen.findAllByRole('heading', { level: 6 })).toHaveLength(2);
     expect(screen.getByRole('heading', { name: /corba/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', {  name: /Kumpir/i})).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Kumpir/i })).toBeInTheDocument();
     const backGroundImages = screen.getAllByTestId('bg-card-image')
     expect(backGroundImages[0])
-    .toHaveStyle(`background-image: url(${meals.meals[0].strMealThumb})`)
+      .toHaveStyle(`background-image: url(${meals.meals[0].strMealThumb})`)
     expect(backGroundImages[1])
-    .toHaveStyle(`background-image: url(${meals.meals[1].strMealThumb})`)
+      .toHaveStyle(`background-image: url(${meals.meals[1].strMealThumb})`)
   });
 
   it('"Select By Category" return the correct recipes', async () => {
@@ -37,13 +37,16 @@ describe('Route "/meals"', () => {
       { route: '/meals' },
     );
 
-    expect(await screen.findAllByRole('heading', {level: 6})).toHaveLength(2);
-    await userEvent.selectOptions(screen.getByRole('combobox'), ['Breakfast']);
-    expect(await screen.findByText(/breakfast 1/i)).toBeInTheDocument();
-    expect(screen.getByRole('heading', {  name: /breakfast 2/i})).toBeInTheDocument();
+    expect(await screen.findAllByRole('heading', { level: 6 })).toHaveLength(2);
+    await userEvent.click(screen.getByRole('combobox'));
+    await userEvent.click(screen.getByText('Breakfast'));
+    expect(global.fetch).toHaveBeenCalledWith(`https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast`);
+    expect(await screen.findByRole('heading', { name: /breakfast 1/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /breakfast 2/i })).toBeInTheDocument();
 
-    await userEvent.selectOptions(screen.getByRole('combobox'), ['All']);
+    await userEvent.click(screen.getByRole('combobox'));
+    await userEvent.click(screen.getByText('Breakfast'));
     expect(await screen.findByRole('heading', { name: /corba/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', {  name: /Kumpir/i})).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Kumpir/i })).toBeInTheDocument();
   });
 });

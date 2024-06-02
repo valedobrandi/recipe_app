@@ -9,20 +9,21 @@ type SelectByCategoryPropsType = {
 }
 
 export function SelectByCategory({ categories, fetchBy, select }: SelectByCategoryPropsType) {
-    
+
     return (
-           <div className="w-72 mt-2 m-auto">
+        <div className="w-72 mt-2 m-auto">
             <Form.Select
                 className="text-xl"
                 value={select}
+                onChange={() => { }}
             >
                 {categories && categories.map((category, index) => (
                     <option
-                    onClick={(event) => fetchBy(event.currentTarget.value)}
-                    key={index} value={category}>{category}</option>
+                        onClick={(event) => fetchBy(event.currentTarget.value)}
+                        key={index} value={category}>{category}</option>
 
                 ))}
             </Form.Select>
-        </div> 
+        </div>
     );
 }

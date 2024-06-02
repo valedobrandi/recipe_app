@@ -5,7 +5,7 @@ import {
 } from "../types/type";
 import useFetch from "../Hooks/useFetch";
 
-import { DRINKS_CATEGORIES_API, DRINKS_INGREDIENT_API, DRINKS_NAME_API, DRINKS_RANDOM_API } from "./utils/drinksAPI";
+import { DRINKS_BY_CATEGORIES_API, DRINKS_CATEGORIES_API, DRINKS_INGREDIENT_API, DRINKS_NAME_API, DRINKS_RANDOM_API } from "./utils/drinksAPI";
 import useSearchRecipe from "../Hooks/useSearchRecipe";
 type DrinksProviderType = {
   children: React.ReactNode;
@@ -22,47 +22,16 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
   }, []);
 
   const [select, setSelect] = useState("All")
-/*   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<unknown>();
-  const [drinks, setDrinks] = useState<RecipeType[]>([]); */
-
-  
   const categoryRef = useRef<string>('');
-  //const navigate = useNavigate();
+  const {
+    data: categories,
+    loading: loadingCategories
+  } = useFetch(`${DRINKS_CATEGORIES_API}list`) as EffectCategoryType;
 
   const {
-     data: categories, 
-     loading: loadingCategories 
-    } = useFetch(`${DRINKS_CATEGORIES_API}list`) as EffectCategoryType;
+    data: drinks, error, fetchData, loading,
+  } = useSearchRecipe('drinks', 'idDrink')
 
-    const {
-      data: drinks, error, fetchData, loading,
-    } = useSearchRecipe('drinks', 'idDrink')
-
-
-/*   const fetchData = async (url = "", redirect = true) => {
-    setLoading(true);
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-
-      if (data.drinks.length === 0 || data.drinks === 'null') {
-        return window.alert("Receita não encontrada!");
-      }
-      
-      if (data.drinks.length === 1 && redirect) {
-       return  navigate(`${location.pathname}/${data.drinks[0].idDrink}`);
-      }
-      setDrinks(filterDataKeys(data.drinks));
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error);
-        return window.alert("Receita não encontrada!");
-      }
-    } finally {
-      setLoading(false);
-    }
-  }; */
 
   const handleFetch = async (radio = "", input = "") => {
     switch (radio) {
@@ -79,23 +48,21 @@ export default function DrinksProvider({ children }: DrinksProviderType) {
         break;
     }
   };
-  
+
   const fetchByCategory = (category: string) => {
-    setSelect(category) 
-    
+    setSelect(category)
+
     if (category === "All" || categoryRef.current === category) {
-      const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
       categoryRef.current = category;
-      return fetchData(url, false);
+      return fetchData(DRINKS_NAME_API, false);
     }
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
-    fetchData(url, false);
+    fetchData(`${DRINKS_BY_CATEGORIES_API}${category}`, false);
     categoryRef.current = category;
   };
 
 
- 
-  
+
+
   return (
     <RecipesContext.Provider
       value={{
