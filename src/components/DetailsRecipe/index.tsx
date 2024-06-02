@@ -1,15 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { recipeDetails } from "../../services/recipeDetails";
-import { DataType, RecipeDetailType } from "../../types/type";
-import { useLocation, useParams } from "react-router-dom";
-
-import UniqueRecipeContext from "../../Context/UniqueRecipeContext";
 import DetailTitleImage from "../DetailTitleImage";
 import IngredientsTable from "../IngredientsTable";
 import RecipeVideo from "../RecipeVideo";
 import CheckboxIngredients from "../CheckboxIngredients";
 import { Card, List } from "@material-tailwind/react";
 import Loading from "../Loading";
+import useSearchRecipeById from "../../Hooks/useSearchRecipeById";
+import { useParams } from "react-router-dom";
 
 type DetailsRecipeProps = {
   checkBox: boolean;
@@ -24,60 +20,27 @@ export default function DetailsRecipe({
   handleCheckBox = () => { },
   checkList = [],
 }: DetailsRecipeProps) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string>();
+
   const { id } = useParams();
-  const location = useLocation();
-  const { onSetRecipeDetail, recipeDetail: data } = useContext(UniqueRecipeContext);
-  const isValid = location.pathname.includes("meals");
+  const { loading, error, recipeDetail } = useSearchRecipeById(id)
 
-  const path = isValid ? "themealdb" : "thecocktaildb";
-
-  const dataRecipe: DataType = data ? data : [];
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(`https://www.${path}.com/api/json/v1/1/lookup.php?i=${id}`);
-        const data = await response.json();
-        onSetRecipeDetail(data);
-
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-          console.log(err);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData()
-  }, []);
-
-
-
-  let recipeDetail: RecipeDetailType[] = []
-  if ("meals" in dataRecipe && dataRecipe.meals) {
-    recipeDetail = recipeDetails(dataRecipe.meals, true);
-
-  }
-  if ("drinks" in dataRecipe && dataRecipe.drinks) {
-    recipeDetail = recipeDetails(dataRecipe.drinks, false);
-  }
 
   if (loading) return (
-  <div className="flex justify-center m-20">
-  <Loading />
-  </div>
-);
-  if (error) return <p>{error}</p>
+    <div className="flex justify-center m-20">
+      <Loading />
+    </div>
+  );
+  if (error) return <p>{error.message}</p>
 
   return (
     <>
       {recipeDetail &&
         recipeDetail.map((recipe) => {
-          const setInstructions = recipe.instruction.includes("STEP") ? recipe.instruction.split("STEP") : recipe.instruction.split(".")
+
+          const setInstructions = recipe.instruction.includes("STEP")
+            ? recipe.instruction.split("STEP")
+            : recipe.instruction.split(".")
+
           return (
             <div key={recipe.id}>
               <DetailTitleImage {...recipe} />

@@ -8,23 +8,23 @@ type UniqueRecipeProviderType = {
 };
 type UseLocationType = {
   store: FavoriteType[];
-  setStorage: (value:  FavoriteType[]) => void;
-  }
+  setStorage: (value: FavoriteType[]) => void;
+}
 
 export default function UniqueRecipeProvider({ children }: UniqueRecipeProviderType) {
   const { store, setStorage } = useLocalStorage<FavoriteType[]>(
-    "favoriteRecipes",[]) as UseLocationType
- 
+    "favoriteRecipes", []) as UseLocationType
+
   const [recipeDetail, setRecipeDetail] = useState<DataType>([])
 
 
-  const onSetRecipeDetail = (recipe: DataType ) => {
+  const onSetRecipeDetail = (recipe: DataType) => {
     setRecipeDetail(recipe)
   }
 
-const onSetStore = (data:  FavoriteType[]) => {
-  setStorage(data)
-}
+  const onSetStore = (data: FavoriteType[]) => {
+    setStorage(data)
+  }
 
   return (
     <UniqueRecipeContext.Provider
