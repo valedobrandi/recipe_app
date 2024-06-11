@@ -1,9 +1,9 @@
 export type RecipeDataType = {
-  meals: MealsDataType[] 
-  drinks: DrinksDataType[]
+  meals: MealsDataType[];
+  drinks: DrinksDataType[];
 };
 
-export type MealsDataType =   {
+export type MealsDataType = {
   [key: string]: string;
   idMeal: string;
   strMeal: string;
@@ -58,7 +58,7 @@ export type MealsDataType =   {
   strImageSource: string;
   strCreativeCommonsConfirmed: string;
   dateModified: string;
-  }
+};
 
 export type DrinksDataType = {
   [key: string]: string;
@@ -114,11 +114,11 @@ export type DrinksDataType = {
 };
 
 export type RecipeType = {
-   id: string;
-   title: string;
-   img: string;
-   categories: string;
-  } 
+  id: string;
+  title: string;
+  img: string;
+  categories: string;
+};
 
 export type IngredientKeyType = {
   [key: string]: string;
@@ -142,29 +142,26 @@ export type IngredientKeyType = {
   strIngredient18: string;
   strIngredient19: string;
   strIngredient20: string;
-}
-
+};
 
 export type CategoriesType = {
-  meals: {strCategory: string}[]
-  drinks: {strCategory: string}[]
- } 
+  meals: { strCategory: string }[];
+  drinks: { strCategory: string }[];
+};
 
- export type ContextType = {
+export type ContextType = {
   drinks?: RecipeType[] | null;
   meals?: RecipeType[] | undefined;
   error: unknown;
   loading: boolean;
-  handleFetch: (radio: string, input: string) => void,
+  handleFetch: (radio: string, input: string) => void;
   fetchByCategory: (category: string) => void;
-  categories: CategoriesType | undefined
+  categories: CategoriesType | undefined;
   loadingCategories: boolean;
-  select: string
+  select: string;
 };
 
-
 export type FavoriteType = {
-
   id: string;
   type: string;
   nationality: string;
@@ -175,7 +172,7 @@ export type FavoriteType = {
   doneDate: string;
   tags: string[];
   detailLink: string;
-}
+};
 
 export type RecipeDetailType = {
   id: string;
@@ -187,10 +184,9 @@ export type RecipeDetailType = {
   measures: string[];
   instruction: string;
   video: string;
-}
+};
 
-export type DataType = 
-   {meals: MealsDataType[]} | { drinks: DrinksDataType[] } | [];
-
-
-
+export type DataType =
+  | { meals: MealsDataType[] }
+  | { drinks: DrinksDataType[] }
+  | [];

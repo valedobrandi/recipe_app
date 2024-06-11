@@ -3,7 +3,7 @@ import DrinksContext from "../../Context/DrinksContext";
 import MealsContext from "../../Context/MealsContext";
 import UniqueRecipeContext from "../../Context/UniqueRecipeContext";
 import { DataType } from "../../types/type";
-import Recomendation from "../Recomendation";
+import Recommendation from "../Recomendation";
 
 
 
@@ -24,8 +24,8 @@ export default function TypeRecommendation() {
 
   return (
     <>
-      {isMeals && <Recomendation recipes={drinks} />}
-      {isDrinks && <Recomendation recipes={meals} />}
+      {isMeals && <Recommendation recipes={drinks} />}
+      {isDrinks && <Recommendation recipes={meals} />}
     </>
   )
 }

@@ -3,7 +3,6 @@ import IngredientsTable from "../IngredientsTable";
 import RecipeVideo from "../RecipeVideo";
 import CheckboxIngredients from "../CheckboxIngredients";
 import { Card, List } from "@material-tailwind/react";
-import Loading from "../Loading";
 import useSearchRecipeById from "../../Hooks/useSearchRecipeById";
 import { useParams } from "react-router-dom";
 
@@ -22,14 +21,10 @@ export default function DetailsRecipe({
 }: DetailsRecipeProps) {
 
   const { id } = useParams();
-  const { loading, error, recipeDetail } = useSearchRecipeById(id)
+  const { error, recipeDetail } = useSearchRecipeById(id)
 
 
-  if (loading) return (
-    <div className="flex justify-center m-20">
-      <Loading />
-    </div>
-  );
+
   if (error) return <p>{error.message}</p>
 
   return (

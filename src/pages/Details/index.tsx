@@ -6,19 +6,21 @@ import { Button } from "@material-tailwind/react";
 import DetailsRecipe from "../../components/DetailsRecipe";
 import Loading from "../../components/Loading";
 import TypeRecommendation from "../../components/TypeRecommendation";
+import useSearchRecipeById from "../../Hooks/useSearchRecipeById";
 
 type DetailsProps = {
   type: string;
 }
 
 
-export default function Details({type}: DetailsProps) {
+export default function Details({ type }: DetailsProps) {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { loading } = useSearchRecipeById(id)
 
 
-  const {loading: drinksLoading } = useContext(DrinksContext);
-  const {loading: mealsLoading } = useContext(MealsContext);
+  const { loading: drinksLoading } = useContext(DrinksContext);
+  const { loading: mealsLoading } = useContext(MealsContext);
 
 
 
@@ -26,6 +28,12 @@ export default function Details({type}: DetailsProps) {
     if (type === 'meals') { return navigate(`/meals/${id}/in-progress`) }
     if (type === 'drinks') { return navigate(`/drinks/${id}/in-progress`) }
   };
+
+  if (loading || mealsLoading || drinksLoading) return (
+    <div className="flex justify-center m-20">
+      <Loading />
+    </div>
+  );
 
 
   return (
@@ -40,7 +48,7 @@ export default function Details({type}: DetailsProps) {
       </div>
       <hr />
       <h2 className="my-10 text-xl text-center font-bold">Other Recommendations</h2>
-      {mealsLoading || drinksLoading ? <Loading/> : <TypeRecommendation/>}
+      <TypeRecommendation />
     </div>
   );
 }

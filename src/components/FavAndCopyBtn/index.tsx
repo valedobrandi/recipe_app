@@ -1,14 +1,13 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 
 import { favoriteStore } from "../../services/favoriteStore";
 import { DataType, FavoriteType } from "../../types/type";
 import UniqueRecipeContext from "../../Context/UniqueRecipeContext";
-import { writeClipboardText } from "../../utils/writeClipboardText";
 import { useLocation } from "react-router-dom";
 import LocalStoreContext from "../../Context/LocalStoreContext";
-import share_icon from "../../assets/Share.svg"
 import like_icon from "../../assets/like.svg"
 import dislike_icon from "../../assets/dislike.svg"
+import ShareButton from "../share_button";
 
 export default function FavAndCopyBtn({ id }: { id: string }) {
   const location = useLocation()
@@ -16,7 +15,7 @@ export default function FavAndCopyBtn({ id }: { id: string }) {
   const { recipeDetail: data } = useContext(UniqueRecipeContext);
   const { favoriteRecipesStore, setfavoriteRecipesStore } = useContext(LocalStoreContext)
 
-
+  const titleRef = useRef("")
   const isStore = favoriteRecipesStore ? favoriteRecipesStore : [];
   const dataRecipe: DataType = data ? data : [];
 
@@ -28,11 +27,11 @@ export default function FavAndCopyBtn({ id }: { id: string }) {
 
   if ("meals" in dataRecipe) {
     favorite = favoriteStore(dataRecipe.meals, true, window.location.href);
-
+    titleRef.current = favorite.name
   }
   if ("drinks" in dataRecipe) {
     favorite = favoriteStore(dataRecipe.drinks, false, window.location.href);
-
+    titleRef.current = favorite.name
   }
 
 
@@ -44,19 +43,14 @@ export default function FavAndCopyBtn({ id }: { id: string }) {
   };
 
 
-
-
-
   return (
     <div className="relative flex justify-center">
-      {isValid && <button onClick={() => writeClipboardText(window.location.href)} data-testid="share-btn" className="mr-8">
-        <img src={share_icon} alt="" className="w-14 lg:w-16" />
-      </button>}
+      {isValid && <ShareButton title={titleRef.current} />}
       {isValid && <button onClick={handleFavorite}>
         {isFavorite ?
-          <img src={like_icon} alt="like" className="w-14 lg:w-16" />
+          <img src={like_icon} alt="like" className="ml-12 w-10 lg:w-12" />
           : <img src={dislike_icon} alt="dislike" style={{ filter: "brightness(0) invert(1)" }}
-           className="ml-12 w-6 lg:w-12 fill-light-green-50" />
+            className="ml-12 w-10 lg:w-12 fill-light-green-50" />
         }
       </button>}
     </div>
