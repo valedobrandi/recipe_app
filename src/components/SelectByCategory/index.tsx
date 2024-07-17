@@ -15,11 +15,10 @@ export function SelectByCategory({ categories, fetchBy, select }: SelectByCatego
             <Form.Select
                 className="text-xl"
                 value={select}
-                onChange={() => { }}
+                onChange={(event) => fetchBy(event.currentTarget.value)}
             >
                 {categories && categories.map((category, index) => (
                     <option
-                        onClick={(event) => fetchBy(event.currentTarget.value)}
                         key={index} value={category}>{category}</option>
 
                 ))}
