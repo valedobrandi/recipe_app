@@ -16,11 +16,13 @@ export default function Meals() {
 
   return (
     <>
-      <Header title="MEALS" icon={icon_meals} />
-      <FilterByCategory />
-      {meals && !loading
-        ? <Recipes recipes={meals.slice(0, 12)} />
-        : <Loading />}
+      <div className="pb-1">
+        <Header title="MEALS" icon={icon_meals} />
+        <FilterByCategory />
+        {meals && !loading
+          ? <Recipes recipes={meals.slice(0, 12)} />
+          : <Loading />}
+      </div>
       <Footer />
     </>
   );
